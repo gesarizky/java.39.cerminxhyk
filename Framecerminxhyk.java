@@ -1,4 +1,5 @@
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /*
@@ -44,6 +45,7 @@ public class Framecerminxhyk extends javax.swing.JFrame {
         outx = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         outy = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,15 +62,37 @@ public class Framecerminxhyk extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("x =*");
 
+        inx.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        inx.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inxKeyTyped(evt);
+            }
+        });
+
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Y =*");
+
+        iny.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        iny.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inyKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("h / k =*");
 
+        inhk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        inhk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                inhkKeyTyped(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Terhadap Garis :");
 
+        combo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         combo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pilih:", "Garis X", "Garis Y" }));
         combo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,16 +107,19 @@ public class Framecerminxhyk extends javax.swing.JFrame {
         jLabel9.setText("x =");
 
         outx.setEditable(false);
+        outx.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Y =");
 
         outy.setEditable(false);
+        outy.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,6 +150,8 @@ public class Framecerminxhyk extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -169,14 +198,13 @@ public class Framecerminxhyk extends javax.swing.JFrame {
             outy.setText(null);
         }
         if (combo.getSelectedIndex() == 1) {
-
             if (inx.getText().equals("") || iny.getText().equals("") || inhk.getText().equals("")) {
+                getToolkit().beep();
                 JOptionPane.showMessageDialog(null, "isi semua data");
             } else {
                 String teksx = inx.getText();
                 double inputx = Double.parseDouble(teksx);
                 String teksy = iny.getText();
-                double inputy = Double.parseDouble(teksy);
                 String tekshk = inhk.getText();
                 double inputhk = Double.parseDouble(tekshk);
                 double hasilx = 2 * inputhk - inputx;
@@ -188,12 +216,11 @@ public class Framecerminxhyk extends javax.swing.JFrame {
 
         }
         if (combo.getSelectedIndex() == 2) {
-
             if (inx.getText().equals("") || iny.getText().equals("") || inhk.getText().equals("")) {
+                getToolkit().beep();
                 JOptionPane.showMessageDialog(null, "isi semua data");
             } else {
                 String teksx = inx.getText();
-                double inputx = Double.parseDouble(teksx);
                 String teksy = iny.getText();
                 double inputy = Double.parseDouble(teksy);
                 String tekshk = inhk.getText();
@@ -204,9 +231,32 @@ public class Framecerminxhyk extends javax.swing.JFrame {
                 String outputy = String.valueOf(hasily);
                 outy.setText(outputy);
             }
-
         }
     }//GEN-LAST:event_comboActionPerformed
+
+    private void inxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inxKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if (!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE) || (karakter == '.')))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_inxKeyTyped
+
+    private void inyKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inyKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if (!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE) || (karakter == '.')))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_inyKeyTyped
+
+    private void inhkKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inhkKeyTyped
+        // TODO add your handling code here:
+        char karakter = evt.getKeyChar();
+        if (!(((karakter >= '0') && (karakter <= '9') || (karakter == KeyEvent.VK_BACK_SPACE) || (karakter == KeyEvent.VK_DELETE) || (karakter == '.')))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_inhkKeyTyped
 
     /**
      * @param args the command line arguments
@@ -258,6 +308,7 @@ public class Framecerminxhyk extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField outx;
     private javax.swing.JTextField outy;
     // End of variables declaration//GEN-END:variables
